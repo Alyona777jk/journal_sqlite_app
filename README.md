@@ -1,17 +1,31 @@
-# journal_sqlite_app
+# Практична робота 9.2: Особистий щоденник (Journal) з SQLite
 
-A new Flutter project.
+## Мета
+Реалізація локального реляційного збереження даних у Flutter за допомогою SQLite (`sqflite`).
 
-## Getting Started
+## Database Schema (Схема бази даних)
 
-This project is a starting point for a Flutter application.
+### 1. `journal_entries`
+- `id`: INTEGER (PRIMARY KEY AUTOINCREMENT)
+- `title`: TEXT
+- `content`: TEXT
+- `mood`: TEXT
+- `created_at`: TEXT
+- `updated_at`: TEXT
+- `is_favorite`: INTEGER (0 або 1)
+- `word_count`: INTEGER
 
-A few resources to get you started if this is your first Flutter project:
+### 2. `tags`
+- `id`: INTEGER (PRIMARY KEY AUTOINCREMENT)
+- `name`: TEXT (UNIQUE)
+- `color`: TEXT (Hex-код)
+- `created_at`: TEXT
 
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
+### 3. `entry_tags` (Many-to-Many junction table)
+- `entry_id`: INTEGER (FOREIGN KEY)
+- `tag_id`: INTEGER (FOREIGN KEY)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+### Індекси
+- `idx_entries_created_at` на `journal_entries(created_at)`
+- `idx_entries_mood` на `journal_entries(mood)`
+- `idx_tags_name` на `tags(name)`
