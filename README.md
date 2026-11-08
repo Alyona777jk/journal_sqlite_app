@@ -1,7 +1,8 @@
-# Практична робота 9.2: Особистий щоденник (Journal) з SQLite
+# Практична робота 9.2: Варіант 2: E-Commerce Product Catalog з SQLite
 
-## Мета
-Реалізація локального реляційного збереження даних у Flutter за допомогою SQLite (`sqflite`).
+Мета
+Створити каталог продуктів з категоріями (hierarchical), reviews, ratings, та shopping cart через
+складні JOIN queries.
 
 ## Database Schema (Схема бази даних)
 
